@@ -32,8 +32,24 @@ public static class Utils
         return (s, e, m);
     }
 
+    public static (int, int, int) GetConstants(float value)
+    {
+        var bs = ToBinaryString(value);
+        return GetConstants(bs);
+    }
+
     public static float GetNumberFromConstants((int, int, int) constants)
     {
+        var s = constants.Item1;
+        var e = constants.Item2;
+        var m = constants.Item3;
+        var sign = s == 0 ? -1 : 1;
+        return sign * (float) Math.Pow(2, e - 127) * (float) (1 +m/Math.Pow(2,23));
+    }
+    
+    public static float GetNumberFromConstants(float value)
+    {
+        var constants = GetConstants(value);
         var s = constants.Item1;
         var e = constants.Item2;
         var m = constants.Item3;
@@ -46,5 +62,41 @@ public static class Utils
         var bits = BitConverter.SingleToInt32Bits(value);
         var nextValue = BitConverter.Int32BitsToSingle(bits + 1);
         return nextValue - value;
+    }
+
+    public static double Ulp(double value)
+    {
+        var bits = BitConverter.DoubleToInt64Bits(value);
+        var nextValue = BitConverter.Int64BitsToDouble(bits + 1);
+        return nextValue - value;
+    }
+    public static double AbsoluteError(double given, double exact)
+    {
+        return Math.Abs(given - exact);
+    }
+
+    public static float AbsoluteError(float given, float exact)
+    {
+        return Math.Abs(given - exact);
+    }
+
+    public static double RelativeError(double given, double exact)
+    {
+        return Math.Abs(given - exact) / Math.Abs(exact) * 100;
+    }
+    
+    public static float RelativeError(float given, float exact)
+    {
+        return Math.Abs(given - exact) / Math.Abs(exact) * 100;
+    }
+
+    public static float UlpError(float given, float exact)
+    {
+        return Math.Abs(given - exact) / Ulp(exact);
+    }
+    
+    public static double UlpError(double given, double exact)
+    {
+        return Math.Abs(given - exact) / Ulp(exact);
     }
 }

@@ -1,9 +1,17 @@
 ﻿using FloatingPointArithmetic;
 
-var bs = Utils.ToBinaryString(0xFF);
-Console.WriteLine(bs);
-var constants = Utils.GetConstants(bs);
-Console.WriteLine($"{constants.Item1} {constants.Item2} {constants.Item3}");
-var trueValue = Utils.GetNumberFromConstants(constants);
-Console.WriteLine(trueValue);
-Console.WriteLine(Utils.Ulp(1));
+var numbers = new double[]
+{
+     18014398509481984.0, // 2**54
+     18014398509481982.0, // 2**54-2
+     -9007199254740991.0, // -(2**53-1)
+     -9007199254740991.0,
+     -9007199254740991.0,
+     -9007199254740991.0
+};
+
+
+var s1 = Sum.NaiveSum(numbers);
+var s2 = Sum.KahanSum(numbers);
+var s3 = Sum.RumpSum(numbers);
+Console.WriteLine(Utils.RelativeError(s1, 2));
