@@ -46,7 +46,6 @@ public static class Sum
     /// <summary>
     /// Naive approach to sum N numbers.
     /// </summary>
-
     public static float NaiveSum(IEnumerable<float> numbers)
     {
         return numbers.Sum();
@@ -108,7 +107,7 @@ public static class Sum
             (s, var e) = TwoSum(num, s);
             c += e;
         }
-
+        
         return s + c;
     }
 }
