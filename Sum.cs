@@ -97,6 +97,17 @@ public static class Sum
 
         return s + c;
     }
+
+    public static double PairwiseSum(List<double> numbers)
+    {
+        if (numbers.Count <= 2)
+        {
+            return numbers.Sum();
+        }
+        
+        var m = numbers.Count / 2;
+        return PairwiseSum(numbers.Take(m).ToList()) + PairwiseSum(numbers.Skip(m).ToList());
+    }
     
     public static double RumpSum(IEnumerable<double> numbers)
     {

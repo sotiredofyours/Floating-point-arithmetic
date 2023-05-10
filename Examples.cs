@@ -36,4 +36,18 @@ public static class Examples
         Console.WriteLine(Sum.NaiveSum(numbers));
         Console.WriteLine(Sum.KahanSum(numbers));
     }
+
+    public static void Summing2()
+    {
+        var x = Enumerable.Range(1, 2097152).Select(x => 1d / x).ToList();
+        var sum1 = Sum.KahanSum(x);
+        var sum2 = Sum.NaiveSum(x);
+        var sum3 = Sum.RumpSum(x);
+        var sum4 = Sum.PairwiseSum(x);
+       
+        Console.WriteLine(Utils.UlpError(sum3, sum4));
+        Console.WriteLine(Utils.UlpError(sum4, sum2));
+
+    }
+
 }
