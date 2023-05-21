@@ -1,6 +1,4 @@
 ﻿using FloatingPointArithmetic;
 
-var s = float.PositiveInfinity + float.NegativeInfinity;
-Console.WriteLine(s);
-Console.WriteLine(Utils.ToBinaryString(s));
-Examples.Summing2();
+var a = new[] {7, 11, -24.5d, -12d, 8d};
+Console.WriteLine(HornerAlgo.HornerAlgorithm(a, 2.5));
