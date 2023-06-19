@@ -1,22 +1,19 @@
-﻿
-open System
-open System.Collections.Generic
+﻿open System
 open System.IO
 open Exam
-open System.Linq
+open Utils
 
-module Reader =
+module Exam =
     
-    let path = Path.Combine(Environment.CurrentDirectory, "polynomTest2LE.dat")   
-    let buffer  = File.ReadAllBytes(path)
-    let values = List<double>()
-    for i = 0 to buffer.Length / 8 - 1 do
-        values.Add( BitConverter.ToDouble(buffer, i * 8))
-        printfn $"%g{values[i]}"
+    let pathToLE = Path.Combine(Environment.CurrentDirectory, "polynomTest2LE.dat")   
+    getBytes pathToLE
+        |> bytesToArrayOfDouble
+        |> splitCoefficientsAndArgsLE
+        |> calculateAndPrint
     
-    let arr = [| double 1..3 |]
-    let x, b = HornerAlgo.calculatePalindrome(arr, 2)
+    let pathToBE = Path.Combine(Environment.CurrentDirectory, "polynomTest1BE.dat")
+    getBytes pathToBE
+        |> bytesToArrayOfDouble
+        |> splitCoefficientsAndArgsBE
+        |> calculateAndPrint
     
-    let y = Ulp.getGamma 1000
-    
-    printf $"%g{y} %g{b}"

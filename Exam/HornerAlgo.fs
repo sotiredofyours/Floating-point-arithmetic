@@ -4,7 +4,7 @@ open System
 
 module HornerAlgo =
     
-    let calculatePalindrome (a: double[], x: double) =
+    let private calculatePalindrome (a: double[], x: double) =
         let n = a.Length - 1
         let mutable r: double = a[n]
         let mutable s: double = Math.Abs(a[n]) / double 2
@@ -15,3 +15,11 @@ module HornerAlgo =
         let mutable b: double = (double 2 * (double s + double (Math.Abs(x))) + double (Math.Abs(r)))
         b <- Ulp.getU * (b /(double 1 - double (2*n - 1) * Ulp.getU))
         r, b
+    
+    let calculate (a: double[], x: double) =
+        match a.Length with
+        | 0 -> double 0,  double 0
+        | 1 -> a[0], 0
+        | _ -> calculatePalindrome(a, x)
+        
+   

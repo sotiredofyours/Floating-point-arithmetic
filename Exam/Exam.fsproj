@@ -22,6 +22,7 @@
     <ItemGroup>
         <Compile Include="Ulp.fs" />
         <Compile Include="HornerAlgo.fs" />
+        <Compile Include="Utils.fs" />
         <Compile Include="Program.fs" />
     </ItemGroup>
 
