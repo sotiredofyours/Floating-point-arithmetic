@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Content Include="../polynomTest1BE.dat">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+        
+        <Content Include="../polynomTest2LE.dat">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+       
+    </ItemGroup>
+    
+    <ItemGroup>
+        <Compile Include="Ulp.fs" />
+        <Compile Include="HornerAlgo.fs" />
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+</Project>
