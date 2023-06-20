@@ -13,6 +13,7 @@ module Exam =
     
     let pathToBE = Path.Combine(Environment.CurrentDirectory, "polynomTest1BE.dat")
     getBytes pathToBE
+        |> Array.rev
         |> bytesToArrayOfDouble
         |> splitCoefficientsAndArgsBE
         |> calculateAndPrint
