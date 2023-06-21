@@ -4,7 +4,7 @@ public static class Examples
 {
     public static void InfiniteCircle()
     {
-        for (float i = 0f; i < 1e10f; i+= 1.0f)
+        for (float i = 0f; i < 1e10f; i += 1.0f)
         {
             if (i + 1f == i)
             {
@@ -16,7 +16,7 @@ public static class Examples
 
     public static void Pow()
     {
-        Console.WriteLine(Math.Pow(float.NaN, 0)); 
+        Console.WriteLine(Math.Pow(float.NaN, 0));
         Console.WriteLine(Math.Pow(float.PositiveInfinity, 0));
     }
 
@@ -31,7 +31,7 @@ public static class Examples
             -9007199254740991.0,
             -9007199254740991.0
         };
-        
+
         Console.WriteLine(Sum.RumpSum(numbers));
         Console.WriteLine(Sum.NaiveSum(numbers));
         Console.WriteLine(Sum.KahanSum(numbers));
@@ -44,10 +44,8 @@ public static class Examples
         var sum2 = Sum.NaiveSum(x);
         var sum3 = Sum.RumpSum(x);
         var sum4 = Sum.PairwiseSum(x);
-       
+
         Console.WriteLine(Utils.UlpError(sum3, sum4));
         Console.WriteLine(Utils.UlpError(sum4, sum2));
-
     }
-
 }

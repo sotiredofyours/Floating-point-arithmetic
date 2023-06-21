@@ -34,7 +34,7 @@ public static class ScalarProduct
 
         return s;
     }
-    
+
     public static (double, double) FmaProductTwo(double a, double b)
     {
         var p = a * b;
@@ -55,6 +55,4 @@ public static class ScalarProduct
 
         return s + c;
     }
-    
-    
 }

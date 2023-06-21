@@ -9,21 +9,17 @@
         <Content Include="../polynomTest1BE.dat">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
-        
+
         <Content Include="../polynomTest2LE.dat">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </Content>
     </ItemGroup>
 
     <ItemGroup>
-       
-    </ItemGroup>
-    
-    <ItemGroup>
-        <Compile Include="Ulp.fs" />
-        <Compile Include="HornerAlgo.fs" />
-        <Compile Include="Utils.fs" />
-        <Compile Include="Program.fs" />
+        <Compile Include="Ulp.fs"/>
+        <Compile Include="HornerAlgo.fs"/>
+        <Compile Include="Utils.fs"/>
+        <Compile Include="Program.fs"/>
     </ItemGroup>
 
 </Project>
