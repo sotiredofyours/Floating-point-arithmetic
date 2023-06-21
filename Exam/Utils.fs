@@ -42,4 +42,5 @@ module Utils =
                 prioriError (coefficients.Length - 1) * HornerAlgo.prioriSum(coefficients, x)
 
             let result, posterioriError = HornerAlgo.calculate (coefficients, x)
-            printfn $" Priori error = {prioriError}\n Result = {result}\n Posteriori error = {posterioriError}")
+            printfn $" Priori error = {prioriError}\n Result = {result}\n Posteriori error = {posterioriError} \n"
+        )
