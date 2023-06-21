@@ -1,7 +1,5 @@
 ﻿namespace Exam
 
-open System
-
 module HornerAlgo =
 
     let prioriSum (a: double[], x: double) =
