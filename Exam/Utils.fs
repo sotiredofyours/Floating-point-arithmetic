@@ -19,7 +19,23 @@ module Utils =
         let args = arr[n - 3 ..]
         let coefficients = arr[0 .. n - 4]
         args, coefficients
-
+    
+    let posterioriError(a: double[], x: double) =
+        let n = a.Length - 1
+        let mutable p = a[n-1]
+        let mutable m = abs(a[n-1])/double 2
+        for i = 0 to n do
+            p <- p * x + a[i]
+            m <- m * abs(x) + abs(p)
+        m <- Ulp.getU * (double 2 * m - abs(p))
+        m
+    
+    let getPosterioriError(a: double[], x: double) =
+        match a.Length with
+        | 0 -> double 0
+        | 1 -> double 0
+        | _ -> posterioriError(a, x)
+    
     let prioriError (n: int) =
         let u = Ulp.getU
 
@@ -41,6 +57,7 @@ module Utils =
             let prioriError =
                 prioriError (coefficients.Length - 1) * HornerAlgo.prioriSum(coefficients, x)
 
-            let result, posterioriError = HornerAlgo.calculate (coefficients, x)
-            printfn $" Priori error = {prioriError}\n Result = {result}\n Posteriori error = {posterioriError} \n"
+            let result, e = HornerAlgo.calculate (coefficients, x)
+            let pe = getPosterioriError(coefficients, x)
+            printfn $" Priori error = {prioriError}\n Result = {result}\n Posteriori error = {e} \n PE (2 var) = {pe}"
         )
